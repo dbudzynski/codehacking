@@ -1,6 +1,16 @@
 @extends('layouts.admin')
 
 @section('content')
+
+
+    @if(Session::has('deleted_user'))
+
+        <div class="alert alert-danger alert-dismissable fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            <strong>MESSAGE:</strong> {{session('deleted_user')}}
+        </div>
+    @endif
+
     <h1>Users</h1>
     <table class="table">
         <thead>
