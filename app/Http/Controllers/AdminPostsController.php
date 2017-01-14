@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Http\Requests\PostsCreateRequest;
 use App\Post;
 use App\Photo;
+use Illuminate\Support\Facades\Auth;
 
 class AdminPostsController extends Controller
 {
@@ -29,13 +30,15 @@ class AdminPostsController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::lists('name', 'id')->all();
+//        $categories = Category::all()->pluck('name', 'id');
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\PostsCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(PostsCreateRequest $request)

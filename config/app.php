@@ -159,6 +159,7 @@ return [
          * User Declared Providers
          */
         Collective\Html\HtmlServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
     ],
 
